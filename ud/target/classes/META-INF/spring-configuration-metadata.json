@@ -1,0 +1,118 @@
+{
+  "groups": [
+    {
+      "name": "public.server",
+      "type": "com.multi.domain.iot.ud.starter.UDClientStarter",
+      "sourceType": "com.multi.domain.iot.ud.starter.UDClientStarter"
+    },
+    {
+      "name": "system",
+      "type": "com.multi.domain.iot.ud.config.SystemConfig",
+      "sourceType": "com.multi.domain.iot.ud.config.SystemConfig"
+    },
+    {
+      "name": "system.contract",
+      "type": "com.multi.domain.iot.ud.config.ContractConfig",
+      "sourceType": "com.multi.domain.iot.ud.config.SystemConfig",
+      "sourceMethod": "getContract()"
+    },
+    {
+      "name": "ud",
+      "type": "com.multi.domain.iot.ud.param.UDPersonalInformation",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    }
+  ],
+  "properties": [
+    {
+      "name": "public.server.fetch-public-parameter-response-handler",
+      "type": "com.multi.domain.iot.ud.handler.response.FetchPublicParameterResponseHandler",
+      "sourceType": "com.multi.domain.iot.ud.starter.UDClientStarter"
+    },
+    {
+      "name": "public.server.host",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.starter.UDClientStarter"
+    },
+    {
+      "name": "public.server.packet-codec-handler",
+      "type": "com.multi.domain.iot.common.codec.PacketCodecHandler",
+      "sourceType": "com.multi.domain.iot.ud.starter.UDClientStarter"
+    },
+    {
+      "name": "public.server.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.ud.starter.UDClientStarter"
+    },
+    {
+      "name": "public.server.query-audit-agent-and-i-d-verifiers-response-handler",
+      "type": "com.multi.domain.iot.ud.handler.response.QueryAuditAgentAndIDVerifiersResponseHandler",
+      "sourceType": "com.multi.domain.iot.ud.starter.UDClientStarter"
+    },
+    {
+      "name": "system.cert-path",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.config.SystemConfig"
+    },
+    {
+      "name": "system.contract.authentication-address",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.config.ContractConfig"
+    },
+    {
+      "name": "system.group-id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.ud.config.SystemConfig"
+    },
+    {
+      "name": "system.hex-private-key",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.config.SystemConfig"
+    },
+    {
+      "name": "system.peers",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.config.SystemConfig"
+    },
+    {
+      "name": "ud.domain",
+      "type": "com.multi.domain.iot.common.domain.Domain",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.domain-identity",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.email",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.id",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.listen-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.name",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.params-save-path",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.phone",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    }
+  ],
+  "hints": []
+}

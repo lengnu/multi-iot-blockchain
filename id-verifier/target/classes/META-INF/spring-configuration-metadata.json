@@ -1,0 +1,67 @@
+{
+  "groups": [
+    {
+      "name": "idv",
+      "type": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation",
+      "sourceType": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation"
+    },
+    {
+      "name": "public.server",
+      "type": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter",
+      "sourceType": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter"
+    }
+  ],
+  "properties": [
+    {
+      "name": "idv.domain",
+      "type": "com.multi.domain.iot.common.domain.Domain",
+      "sourceType": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation"
+    },
+    {
+      "name": "idv.domain-identity",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation"
+    },
+    {
+      "name": "idv.host",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation"
+    },
+    {
+      "name": "idv.listen-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation"
+    },
+    {
+      "name": "idv.params-save-path",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.verifier.param.IDVerifierPersonalInformation"
+    },
+    {
+      "name": "public.server.enroll-information-response-handler",
+      "type": "com.multi.domain.iot.verifier.handler.response.EnrollInformationResponseHandler",
+      "sourceType": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter"
+    },
+    {
+      "name": "public.server.fetch-public-parameter-response-handler",
+      "type": "com.multi.domain.iot.verifier.handler.response.FetchPublicParameterResponseHandler",
+      "sourceType": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter"
+    },
+    {
+      "name": "public.server.host",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter"
+    },
+    {
+      "name": "public.server.listen-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter"
+    },
+    {
+      "name": "public.server.packet-codec-handler",
+      "type": "com.multi.domain.iot.common.codec.PacketCodecHandler",
+      "sourceType": "com.multi.domain.iot.verifier.starter.IDVerifierClientStarter"
+    }
+  ],
+  "hints": []
+}

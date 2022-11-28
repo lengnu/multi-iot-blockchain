@@ -1,0 +1,57 @@
+{
+  "groups": [
+    {
+      "name": "audit-agent",
+      "type": "com.multi.domain.iot.auditagent.param.AuditAgentPersonalInformation",
+      "sourceType": "com.multi.domain.iot.auditagent.param.AuditAgentPersonalInformation"
+    },
+    {
+      "name": "public.server",
+      "type": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter",
+      "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    }
+  ],
+  "properties": [
+    {
+      "name": "audit-agent.host",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.param.AuditAgentPersonalInformation"
+    },
+    {
+      "name": "audit-agent.listen-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.auditagent.param.AuditAgentPersonalInformation"
+    },
+    {
+      "name": "audit-agent.params-sava-path",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.param.AuditAgentPersonalInformation"
+    },
+    {
+      "name": "public.server.enroll-information-response-handler",
+      "type": "com.multi.domain.iot.auditagent.handler.response.EnrollInformationResponseHandler",
+      "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    },
+    {
+      "name": "public.server.fetch-public-parameter-response-handler",
+      "type": "com.multi.domain.iot.auditagent.handler.response.FetchPublicParameterResponseHandler",
+      "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    },
+    {
+      "name": "public.server.host",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    },
+    {
+      "name": "public.server.listen-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    },
+    {
+      "name": "public.server.packet-codec-handler",
+      "type": "com.multi.domain.iot.common.codec.PacketCodecHandler",
+      "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    }
+  ],
+  "hints": []
+}
