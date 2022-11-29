@@ -112,6 +112,11 @@
       "name": "ud.phone",
       "type": "java.lang.String",
       "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
+    },
+    {
+      "name": "ud.register",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.multi.domain.iot.ud.param.UDPersonalInformation"
     }
   ],
   "hints": []

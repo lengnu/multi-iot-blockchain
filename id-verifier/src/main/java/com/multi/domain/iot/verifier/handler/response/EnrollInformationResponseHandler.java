@@ -37,6 +37,7 @@ public class EnrollInformationResponseHandler extends SimpleChannelInboundHandle
             idVerifierPersonalParams.store(idVerifierPersonalInformation.getParamsSavePath(),false);
             GlobalRegisterParamsUtils.storeAuditAgentAddress(responsePacket.getAuditAgentRegisterParams());
             log.info("身份验证者参数保存在本地，请在文件 [{}] 下查看", idVerifierPersonalInformation.getParamsSavePath());
+            log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }else {
             log.error(responsePacket.getReason());
             log.error("程序异常退出");

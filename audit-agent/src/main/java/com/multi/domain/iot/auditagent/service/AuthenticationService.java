@@ -1,0 +1,101 @@
+package com.multi.domain.iot.auditagent.service;
+
+import com.multi.domain.iot.auditagent.model.bo.AuthenticationAddAuthenticationInformationInputBO;
+import com.multi.domain.iot.auditagent.model.bo.AuthenticationIsAuthorizedInputBO;
+import com.multi.domain.iot.auditagent.model.bo.AuthenticationQuerySingleAuthenticationInformationInputBO;
+
+
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigInteger;
+import java.util.Arrays;
+import javax.annotation.PostConstruct;
+
+import com.multi.domain.iot.common.message.BlockChainRegisterMessage;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.fisco.bcos.sdk.client.Client;
+import org.fisco.bcos.sdk.transaction.manager.AssembleTransactionProcessor;
+import org.fisco.bcos.sdk.transaction.manager.TransactionProcessorFactory;
+import org.fisco.bcos.sdk.transaction.model.dto.CallResponse;
+import org.fisco.bcos.sdk.transaction.model.dto.TransactionResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
+@NoArgsConstructor
+@Data
+public class AuthenticationService {
+    public static final String ABI = com.multi.domain.iot.auditagent.utils.IOUtil.readFileAsString("abi/Authentication.abi");
+
+    public static final String BINARY = com.multi.domain.iot.auditagent.utils.IOUtil.readFileAsString("bin/ecc/Authentication.bin");
+
+    @Value("${system.contract.authenticationAddress}")
+    private String address;
+
+    @Autowired
+    private Client client;
+
+    AssembleTransactionProcessor txProcessor;
+
+    @PostConstruct
+    public void init() throws Exception {
+        this.txProcessor = TransactionProcessorFactory.createAssembleTransactionProcessor(this.client, this.client.getCryptoSuite().getCryptoKeyPair());
+    }
+
+    public TransactionResponse getAllAuthenticationInformation() throws Exception {
+        return this.txProcessor.sendTransactionAndGetResponse(this.address, ABI, "getAllAuthenticationInformation", Arrays.asList());
+    }
+
+    public CallResponse isAuthorized(AuthenticationIsAuthorizedInputBO input) throws Exception {
+        return this.txProcessor.sendCall(this.client.getCryptoSuite().getCryptoKeyPair().getAddress(), this.address, ABI, "isAuthorized", input.toArgs());
+    }
+
+    public CallResponse querySingleAuthenticationInformation(AuthenticationQuerySingleAuthenticationInformationInputBO input) throws Exception {
+        return this.txProcessor.sendCall(this.client.getCryptoSuite().getCryptoKeyPair().getAddress(), this.address, ABI, "querySingleAuthenticationInformation", input.toArgs());
+    }
+
+    public TransactionResponse addAuthenticationInformation(AuthenticationAddAuthenticationInformationInputBO input) throws Exception {
+        return this.txProcessor.sendTransactionAndGetResponse(this.address, ABI, "addAuthenticationInformation", input.toArgs());
+    }
+
+    /**
+     * 判断对应的PID是否被授权
+     */
+    public boolean isAuthorized(String pid) throws Exception {
+        AuthenticationIsAuthorizedInputBO bo = new AuthenticationIsAuthorizedInputBO();
+        bo.set_pid(pid);
+        CallResponse response = this.isAuthorized(bo);
+        Boolean result = (Boolean) response.getReturnObject().get(0);
+        return result;
+    }
+
+    /**
+     * pid上链
+     */
+    public boolean addAuthenticationInformation(String pid, String identityProtectionInformation) throws Exception {
+        AuthenticationAddAuthenticationInformationInputBO bo = new AuthenticationAddAuthenticationInformationInputBO();
+        bo.set_pid(pid);
+        bo.set_identityProtectionInformation(identityProtectionInformation);
+        TransactionResponse transactionResponse = addAuthenticationInformation(bo);
+        BigInteger result = (BigInteger) transactionResponse.getReturnObject().get(0);
+        return result.equals(BigInteger.ONE);
+    }
+
+    /**
+     * pid上链
+     */
+    public boolean addAuthenticationInformation(BlockChainRegisterMessage blockChainRegisterMessage) throws Exception {
+        AuthenticationAddAuthenticationInformationInputBO bo = new AuthenticationAddAuthenticationInformationInputBO();
+        bo.set_pid(blockChainRegisterMessage.getPid());
+        bo.set_identityProtectionInformation(blockChainRegisterMessage.getIdentityProtectionInformation());
+        String host = blockChainRegisterMessage.getInetSocketAddress().getAddress().getHostAddress();
+        int port = blockChainRegisterMessage.getInetSocketAddress().getPort();
+        bo.set_host(host);
+        bo.set_port(BigInteger.valueOf(port));
+        TransactionResponse transactionResponse = addAuthenticationInformation(bo);
+        BigInteger result = (BigInteger) transactionResponse.getReturnObject().get(0);
+        return result.equals(BigInteger.ONE);
+    }
+}

@@ -1,5 +1,6 @@
 package com.multi.domain.iot.common.param;
 
+import com.multi.domain.iot.common.util.ComputeUtils;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import it.unisa.dia.gas.jpbc.Pairing;
@@ -35,11 +36,13 @@ public class CurveElementParams {
         curveElementParams.setG(pairing.getG1());
         curveElementParams.setZ(pairing.getZr());
         curveElementParams.setSecureParameter(curveMetaProperties.getSecureParameter());
+        byte[] hashG = ComputeUtils.sha512(curveMetaProperties.getGeneratorG().getBytes());
+        byte[] hashH = ComputeUtils.sha512(curveMetaProperties.getGeneratorH().getBytes());
         curveElementParams.setGeneratorG(
-                pairing.getG1().newElementFromBytes(curveMetaProperties.getGeneratorG().getBytes()).getImmutable()
+                pairing.getG1().newElementFromHash(hashG,0,hashG.length)
                 );
         curveElementParams.setGeneratorH(
-                pairing.getG1().newElementFromBytes(curveMetaProperties.getGeneratorH().getBytes()).getImmutable()
+                pairing.getG1().newElementFromHash(hashH,0,hashH.length)
         );
         return curveElementParams;
     }

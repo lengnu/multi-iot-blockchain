@@ -69,6 +69,7 @@ public class Polynomial {
         return result;
     }
 
+
     private Element computeShareOverInput(Integer input) {
         Objects.requireNonNull(this.coefficients, "多项式还未初始化");
         Element inputElement = this.Z.newElement(input).getImmutable();

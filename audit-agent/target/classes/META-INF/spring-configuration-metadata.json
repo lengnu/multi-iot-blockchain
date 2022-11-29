@@ -9,6 +9,17 @@
       "name": "public.server",
       "type": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter",
       "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    },
+    {
+      "name": "system",
+      "type": "com.multi.domain.iot.auditagent.config.SystemConfig",
+      "sourceType": "com.multi.domain.iot.auditagent.config.SystemConfig"
+    },
+    {
+      "name": "system.contract",
+      "type": "com.multi.domain.iot.auditagent.config.ContractConfig",
+      "sourceType": "com.multi.domain.iot.auditagent.config.SystemConfig",
+      "sourceMethod": "getContract()"
     }
   ],
   "properties": [
@@ -51,6 +62,31 @@
       "name": "public.server.packet-codec-handler",
       "type": "com.multi.domain.iot.common.codec.PacketCodecHandler",
       "sourceType": "com.multi.domain.iot.auditagent.starter.AuditAgentClientStarter"
+    },
+    {
+      "name": "system.cert-path",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.config.SystemConfig"
+    },
+    {
+      "name": "system.contract.authentication-address",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.config.ContractConfig"
+    },
+    {
+      "name": "system.group-id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.multi.domain.iot.auditagent.config.SystemConfig"
+    },
+    {
+      "name": "system.hex-private-key",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.config.SystemConfig"
+    },
+    {
+      "name": "system.peers",
+      "type": "java.lang.String",
+      "sourceType": "com.multi.domain.iot.auditagent.config.SystemConfig"
     }
   ],
   "hints": []

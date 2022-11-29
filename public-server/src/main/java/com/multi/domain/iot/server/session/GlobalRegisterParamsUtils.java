@@ -60,6 +60,10 @@ public class GlobalRegisterParamsUtils {
         Integer curIDVerifierId = ATOMIC_INTEGER.getAndIncrement();
         registerParams.setId(curIDVerifierId);
         domainIDVerifiersRegisterParams.get(domain).put(curIDVerifierId,registerParams);
+        //TODO
+        System.out.println("-----------------");
+        System.out.println(domainIDVerifiersRegisterParams);
+        System.out.println("-----------------");
         log.info("监听到 [{}] 域内有身份验证者进行注册，服务器为其分配ID为 [{}]",domain.getDomainIdentity(),curIDVerifierId);
         return curIDVerifierId;
     }

@@ -19,6 +19,7 @@ public class EnrollInformationResponseHandler extends SimpleChannelInboundHandle
     protected void channelRead0(ChannelHandlerContext ctx, EnrollInformationResponsePacket responsePacket) throws Exception {
         if (responsePacket.isSuccess()){
             log.info("审计代理信息注册成功");
+            log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }else {
             log.error(responsePacket.getReason());
             log.error("程序异常退出");

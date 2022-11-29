@@ -33,6 +33,7 @@ public class GeneratePidRequestHandler extends SimpleChannelInboundHandler<Gener
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, GeneratePidRequestPacket requestPacket) throws Exception {
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         if (requestPacket.isSuccess()) {
             log.info("收到审计代理生成的PID，开始进行本地校验");
             UDPersonalParams udPersonalParams = this.applicationContext.getBean(UDPersonalParams.class);

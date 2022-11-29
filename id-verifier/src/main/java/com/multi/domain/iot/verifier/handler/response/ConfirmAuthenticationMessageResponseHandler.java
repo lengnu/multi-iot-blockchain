@@ -26,5 +26,6 @@ public class ConfirmAuthenticationMessageResponseHandler extends SimpleChannelIn
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ConfirmAuthenticationMessageResponsePacket responsePacket) throws Exception {
         log.info("接收到审计代理发回的确认收到消息");
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 }

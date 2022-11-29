@@ -41,6 +41,7 @@ public class QueryAuditAgentAndIDVerifiersResponseHandler extends SimpleChannelI
             log.error("请等审计代理和身份验证者启动后再重新注册");
             System.exit(1);
         }
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("参与设备UD获取公询审计代理和 [{}] 内身份验证者信息成功，开始本地计算认证信息",udPersonalInformation.getDomain().getDomainIdentity());
         GlobalRegisterParamsUtils.storeRegisterParams(responsePacket);
         UDPersonalParams udPersonalParams = this.applicationContext.getBean(UDPersonalParams.class);

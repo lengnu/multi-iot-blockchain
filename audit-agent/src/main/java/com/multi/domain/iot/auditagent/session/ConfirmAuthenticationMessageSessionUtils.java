@@ -1,6 +1,7 @@
 package com.multi.domain.iot.auditagent.session;
 
 import com.multi.domain.iot.common.domain.Domain;
+import com.multi.domain.iot.common.message.BlockChainRegisterMessage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
@@ -22,7 +23,7 @@ public class ConfirmAuthenticationMessageSessionUtils {
     //正在收集对应UD的IDV发来的确认消息
     private static volatile Set<String> waitingCollectConfirmAuthenticationMessageSet = new HashSet<>();
     //正在等待对应的UD验证(pid - uid)
-    private static volatile Map<String, String> pidIdentityProtectionInformationTemporaryMap = new HashMap<>();
+    private static volatile Map<String, BlockChainRegisterMessage> pidIdentityProtectionInformationTemporaryMap = new HashMap<>();
 
     public static Collection<byte[]> getConfirmsInformation(String uid) {
         return udConfirmAuthenticationMessageTemporaryMap.get(uid).values();
@@ -33,6 +34,10 @@ public class ConfirmAuthenticationMessageSessionUtils {
      */
     public static boolean isWaitUpToBlockChain(String pid) {
         return pidIdentityProtectionInformationTemporaryMap.containsKey(pid);
+    }
+
+    public static BlockChainRegisterMessage getBlockChainRegisterMessage(String pid){
+        return pidIdentityProtectionInformationTemporaryMap.get(pid);
     }
 
     /**
@@ -76,11 +81,11 @@ public class ConfirmAuthenticationMessageSessionUtils {
     /**
      * 做善后工作，清楚缓存，记录完成的ud
      */
-    public static void afterMath(String uid, String pid, boolean success) {
+    public static void afterMath(String uid, String pid, BlockChainRegisterMessage blockChainRegisterMessage,boolean success) {
         clearCache(uid);
         joinFinishSet(uid);
         if (success) {
-            joinWaitUpToBlockChainMap(pid, uid);
+            joinWaitUpToBlockChainMap(pid, blockChainRegisterMessage);
         }
     }
 
@@ -95,8 +100,8 @@ public class ConfirmAuthenticationMessageSessionUtils {
     /**
      * 对于已经生成了的PID，但是还没上链的临时放在里面
      */
-    private static void joinWaitUpToBlockChainMap(String pid, String uid) {
-        pidIdentityProtectionInformationTemporaryMap.put(pid, uid);
+    private static void joinWaitUpToBlockChainMap(String pid, BlockChainRegisterMessage blockChainRegisterMessage) {
+        pidIdentityProtectionInformationTemporaryMap.put(pid, blockChainRegisterMessage);
     }
 
     /**

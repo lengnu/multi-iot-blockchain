@@ -2,10 +2,13 @@ package com.multi.domain.iot.common.polynomial;
 
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
+import it.unisa.dia.gas.jpbc.Pairing;
+import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
+import it.unisa.dia.gas.plaf.jpbc.pairing.a.TypeACurveGenerator;
 import lombok.Data;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.math.BigInteger;
+import java.util.*;
 
 /**
  * @author duwei
@@ -27,7 +30,7 @@ public class VerifiablePolynomial extends Polynomial {
     public VerifiablePolynomial(int degree, Field Z, Element s, Field G, Element h) {
         super(degree, Z, s);
         this.G = G;
-        this.h = h;
+        this.h = h.getImmutable();
     }
 
     /**
@@ -37,9 +40,16 @@ public class VerifiablePolynomial extends Polynomial {
      */
     public Map<Integer, byte[]> computePolynomialCoefficientsCommitment() {
         Map<Integer, byte[]> result = new HashMap<>();
-        final Element[] coefficients = getCoefficients();
-        for (int i = 0; i < coefficients.length; i++) {
-            Element commitment = computePolynomialCoefficientCommitment(coefficients[i]);
+        final Element[] coefficients_temp = getCoefficients();
+        for (int i = 0; i < coefficients_temp.length; i++) {
+            //TOOD
+            System.out.println("---------------");
+            System.out.println("i = " + i + "\t 系数 + " + coefficients_temp[i]);
+            System.out.println("h = " + this.h);
+            System.out.println(this.h.powZn(coefficients_temp[i]));
+            System.out.println("---------------");
+            Element commitment = computePolynomialCoefficientCommitment(coefficients_temp[i]);
+            System.out.println("result = " + commitment);
             result.put(i, commitment.toBytes());
         }
         return result;
@@ -87,6 +97,66 @@ public class VerifiablePolynomial extends Polynomial {
         Element publicKeyElement = this.G.newElementFromBytes(publicKey).getImmutable();
         Element shareElement = getZ().newElementFromBytes(share).getImmutable();
         return publicKeyElement.powZn(shareElement).getImmutable();
+    }
+
+    //TODO
+    public static void main(String[] args) {
+        TypeACurveGenerator typeACurveGenerator = new TypeACurveGenerator(50, 50);
+        Pairing pairing = PairingFactory.getPairing(typeACurveGenerator.generate());
+        Field G = pairing.getG1();
+        Field Z = pairing.getZr();
+        System.out.println("Z = " + Z.getOrder());
+
+
+        //Element h = G.newRandomElement();
+        //Element h = G.newRandomElement();
+        Element h = G.newRandomElement().getImmutable();
+        Element s = Z.newRandomElement().getImmutable();
+
+        System.out.println("h = " + h);
+        System.out.println("s = " + s);
+
+        VerifiablePolynomial verifiablePolynomial = new VerifiablePolynomial(1, Z, s, G, h);
+        System.out.println("系数 = " + Arrays.toString(verifiablePolynomial.getCoefficients()));
+        Set<Integer> input = new HashSet<>();
+        input.add(1);
+        input.add(2);
+        System.out.println("input = " + input);
+        System.out.println("计算份额");
+        Map<Integer, byte[]> map = verifiablePolynomial.computeSharesOverInputSet(input);
+        map.forEach((id,output) -> {
+            System.out.println("f(" + id + ") = " + Z.newElementFromBytes(output));
+        });
+        System.out.println();
+
+        System.out.println("计算份额承诺");
+        Map<Integer, byte[]> computeSharesCommitment = verifiablePolynomial.computeSharesCommitment(map);
+        computeSharesCommitment.forEach((id,commit) -> {
+            System.out.println("第" + id + "个份额\t" + "commit = " + G.newElementFromBytes(commit));
+        });
+        System.out.println();
+
+        System.out.println("计算多项式系数承诺");
+        Map<Integer, byte[]> coefficientsCommitment = verifiablePolynomial.computePolynomialCoefficientsCommitment();
+        coefficientsCommitment.forEach((index,commot) -> {
+            System.out.println("C_" + index  + " = " + G.newElementFromBytes(commot));
+        });
+        System.out.println();
+
+
+        System.out.println("开始进行验证");
+        Element i = Z.newElement(2).getImmutable();
+        System.out.println("i = " + i);
+        Element i_0 = i.powZn(Z.newElement(0).getImmutable()).getImmutable();
+        System.out.println("i_o = " + i_0 );
+        Element C_0 = G.newElementFromBytes(coefficientsCommitment.get(0)).getImmutable().powZn(i_0).getImmutable();
+        System.out.println("第一项 = " + C_0);
+        Element i_1 = i.powZn(Z.newElement(1).getImmutable()).getImmutable();
+        System.out.println("i_1 = " + i_1 );
+        Element C_1 = G.newElementFromBytes(coefficientsCommitment.get(1)).getImmutable().powZn(i_1).getImmutable();
+        System.out.println("第二项 = " + C_1);
+        System.out.println(C_0.mul(C_1).getImmutable());
+        System.out.println(G.newElementFromBytes(computeSharesCommitment.get(2)));
     }
 
 }

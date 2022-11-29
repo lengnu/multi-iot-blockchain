@@ -28,6 +28,7 @@ public class PidCalculator {
             byte[] identityProtectionInformation,
             AuditAgentPersonalParams auditAgentPersonalParams,
             boolean success) {
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         GeneratePidRequestPacket requestPacket = new GeneratePidRequestPacket();
         requestPacket.setSuccess(success);
         if (!success) {

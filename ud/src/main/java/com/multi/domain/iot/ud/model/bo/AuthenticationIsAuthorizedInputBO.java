@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthenticationIsAuthorizedInputBO {
-  private String pid;
+  private String _pid;
 
   public List<Object> toArgs() {
     List args = new ArrayList();
-    args.add(pid);
+    args.add(_pid);
     return args;
   }
 }

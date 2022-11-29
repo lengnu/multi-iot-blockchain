@@ -32,6 +32,7 @@ public class UDPersonalInformation {
     private String phone;
     private Domain domain;
     private String paramsSavePath;
+    private boolean register;
 
     @PostConstruct
     private void init() {

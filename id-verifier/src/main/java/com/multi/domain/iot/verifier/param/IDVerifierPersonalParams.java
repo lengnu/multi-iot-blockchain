@@ -6,6 +6,7 @@ import com.multi.domain.iot.common.param.RegisterParams;
 import com.multi.domain.iot.common.param.StorableProperties;
 import it.unisa.dia.gas.jpbc.Element;
 import lombok.Data;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -45,6 +46,7 @@ public class IDVerifierPersonalParams implements StorableProperties {
             Properties properties = new Properties();
             properties.setProperty("privateKey",this.privateKey.toString());
             properties.setProperty("publicKey",this.publicKey.toString());
+            properties.setProperty("publicKeyBase64", Base64.encodeBase64String(this.publicKey.toBytes()));
             properties.setProperty("id",this.id.toString());
             properties.store(outputStream,"store idVerifier params");
         }catch (Exception e){

@@ -5,6 +5,7 @@ import com.multi.domain.iot.auditagent.param.AuditAgentPersonalParams;
 import com.multi.domain.iot.auditagent.pool.UDConnectionPoolingFactory;
 import com.multi.domain.iot.auditagent.session.ConfirmAuthenticationMessageSessionUtils;
 import com.multi.domain.iot.common.domain.Domain;
+import com.multi.domain.iot.common.message.BlockChainRegisterMessage;
 import com.multi.domain.iot.common.protocol.request.ConfirmAuthenticationMessageRequestPacket;
 import com.multi.domain.iot.common.protocol.request.GeneratePidRequestPacket;
 import com.multi.domain.iot.common.protocol.response.ConfirmAuthenticationMessageResponsePacket;
@@ -62,12 +63,15 @@ public class ConfirmAuthenticationMessageRequestHandler extends SimpleChannelInb
                             boolean waitEnoughConfirmMessage = ConfirmAuthenticationMessageSessionUtils.isWaitEnoughConfirmMessage(uid, totalConfirmNumber);
                             AuditAgentPersonalParams auditAgentPersonalParams = this.applicationContext.getBean(AuditAgentPersonalParams.class);
                             GeneratePidRequestPacket generatePidRequestPacket = PidCalculator.calculatePIDPacket(uid, identityProtectionInformation, auditAgentPersonalParams, waitEnoughConfirmMessage);
-                            //做善后工作，主要是清楚临时缓存
+                            //做善后工作，主要是清除临时缓存，并将需要上链信息临时缓存，等待UD发来的确认消息然后上链
+                            String pid = Base64.encodeBase64String(generatePidRequestPacket.getPidAndSignMessage().getPid());
                             ConfirmAuthenticationMessageSessionUtils.afterMath(
                                     uid,
-                                    Base64.encodeBase64String(generatePidRequestPacket.getPidAndSignMessage().getPid()),
+                                    pid,
+                                    new BlockChainRegisterMessage(pid, uid, udAddress),
                                     generatePidRequestPacket.isSuccess()
                             );
+
                             try {
                                 udConnectionPoolingFactory.sendMessage(udAddress, generatePidRequestPacket);
                             } catch (InterruptedException ignored) {

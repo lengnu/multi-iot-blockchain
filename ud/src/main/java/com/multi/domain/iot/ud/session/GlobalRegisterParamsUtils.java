@@ -28,6 +28,8 @@ public class GlobalRegisterParamsUtils {
     public static void storeRegisterParams(QueryAuditAgentAndIDVerifiersResponsePacket queryAuditAgentAndIDVerifiersResponsePacket) {
         auditAgentRegisterParams = queryAuditAgentAndIDVerifiersResponsePacket.getAuditRegisterParams();
         domainIDVerifiersRegisterParams = queryAuditAgentAndIDVerifiersResponsePacket.getIdVerifierRegisterParams();
+        //TODO
+        System.out.println(queryAuditAgentAndIDVerifiersResponsePacket);
     }
 
     public static RegisterParams getAuditAgentRegisterParams() {

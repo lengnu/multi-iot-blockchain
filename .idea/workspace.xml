@@ -4,11 +4,141 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a635a43-1e92-496a-9a85-8572055eb392" name="Changes" comment="" />
+    <list default="true" id="5a635a43-1e92-496a-9a85-8572055eb392" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/config/ContractConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/config/SdkBeanConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/config/SystemConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/contracts/Authentication.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/contracts/Table.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/model/CommonResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/model/bo/AuthenticationAddAuthenticationInformationInputBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/model/bo/AuthenticationIsAuthorizedInputBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/model/bo/AuthenticationQuerySingleAuthenticationInformationInputBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/service/AuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/service/ServiceManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/utils/IOUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/abi/Authentication.abi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/application-school_aa.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/bin/ecc/Authentication.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/conf-home/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/conf-home/sdk.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/conf-home/sdk.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/conf-school/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/conf-school/sdk.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/conf-school/sdk.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/message/BlockChainRegisterMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/test/JPBCTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/bo/AuthenticationQuerySingleAuthenticationInformationInputBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ud/src/main/resources/application-school_ud.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDParams.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent-params.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/AuditAgentApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/AuditAgentApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/calculator/PidCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/calculator/PidCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/EnrollInformationResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/EnrollInformationResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/GeneratePidResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/GeneratePidResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/param/AuditAgentPersonalParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/param/AuditAgentPersonalParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/resources/application-school.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/application-school.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/AuditAgentApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/AuditAgentApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/calculator/PidCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/calculator/PidCalculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/response/EnrollInformationResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/response/EnrollInformationResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/response/GeneratePidResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/response/GeneratePidResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/param/AuditAgentPersonalParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/param/AuditAgentPersonalParams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auditAgentParams-public.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auditAgentParams-self.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/param/CurveElementParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/param/CurveElementParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/param/RegisterParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/param/RegisterParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/polynomial/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/polynomial/Polynomial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/polynomial/VerifiablePolynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/polynomial/VerifiablePolynomial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/response/QueryAuditAgentAndIDVerifiersResponsePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/response/QueryAuditAgentAndIDVerifiersResponsePacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/param/CurveElementParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/param/CurveElementParams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/param/RegisterParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/param/RegisterParams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/polynomial/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/polynomial/Polynomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/polynomial/VerifiablePolynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/polynomial/VerifiablePolynomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/response/QueryAuditAgentAndIDVerifiersResponsePacket.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/response/QueryAuditAgentAndIDVerifiersResponsePacket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsad.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-Verifier-public.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-Verifier-self.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/response/ConfirmAuthenticationMessageResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/response/ConfirmAuthenticationMessageResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/response/EnrollInformationResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/response/EnrollInformationResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/param/IDVerifierPersonalParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/param/IDVerifierPersonalParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/resources/application-school.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/resources/application-school.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/application-school.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/application-school.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/response/ConfirmAuthenticationMessageResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/response/ConfirmAuthenticationMessageResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/response/EnrollInformationResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/response/EnrollInformationResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/param/IDVerifierPersonalParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/param/IDVerifierPersonalParams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idVerifier.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/session/GlobalRegisterParamsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/session/GlobalRegisterParamsUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/starter/PublicServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/starter/PublicServerStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/server/session/GlobalRegisterParamsUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/server/session/GlobalRegisterParamsUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/server/starter/PublicServerStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/server/starter/PublicServerStarter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud-public.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud-self.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ud/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/UDApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/UDApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/contracts/Authentication.sol" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/contracts/Authentication.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/request/GeneratePidRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/request/GeneratePidRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/FetchPublicParameterResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/FetchPublicParameterResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/CommonResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/CommonResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/bo/AuthenticationAddAuthenticationInformationInputBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/bo/AuthenticationAddAuthenticationInformationInputBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/bo/AuthenticationIsAuthorizedInputBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/model/bo/AuthenticationIsAuthorizedInputBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDPersonalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDPersonalInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/session/GlobalRegisterParamsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/session/GlobalRegisterParamsUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/abi/Authentication.abi" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/resources/abi/Authentication.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/application-home.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/resources/application-home.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/application-school.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/bin/ecc/Authentication.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/resources/bin/ecc/Authentication.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/abi/Authentication.abi" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/abi/Authentication.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/application-home.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/application-home.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/application-school.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/bin/ecc/Authentication.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/bin/ecc/Authentication.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/UDApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/UDApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/request/GeneratePidRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/request/GeneratePidRequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/FetchPublicParameterResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/FetchPublicParameterResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/model/bo/AuthenticationAddAuthenticationInformationInputBO.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/model/bo/AuthenticationAddAuthenticationInformationInputBO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/model/bo/AuthenticationIsAuthorizedInputBO.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/model/bo/AuthenticationIsAuthorizedInputBO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDPersonalInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDPersonalInformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/service/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/service/AuthenticationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/session/GlobalRegisterParamsUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/session/GlobalRegisterParamsUtils.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -16,9 +146,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/maven/apache-maven-3.6.3" />
+        <option name="mavenHome" value="E:/JAVA/maven/apache-maven-3.6.3" />
         <option name="useMavenConfig" value="true" />
-        <option name="userSettingsFile" value="D:\maven\apache-maven-3.6.3\conf\settings.xml" />
+        <option name="userSettingsFile" value="E:\JAVA\maven\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -28,12 +158,42 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="inlay.hints" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/audit-agent/src/main/resources" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\001\Desktop\multi-iot-blockchain\audit-agent\src\main\resources" />
+      <recent name="C:\Users\001\Desktop\multi-iot-blockchain\audit-agent\src\main\java\com\multi\domain\iot\auditagent\config" />
+      <recent name="C:\Users\001\Desktop\multi-iot-blockchain\audit-agent\src\main\java\com\multi\domain\iot\auditagent" />
+      <recent name="C:\Users\001\Desktop\multi-iot-blockchain\ud\src\main\resources\conf-school" />
+      <recent name="C:\Users\001\Desktop\multi-iot-blockchain\ud\src\main\java\com\multi\domain\iot\ud" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\001\Desktop\multi-iot-blockchain\audit-agent\src\main\resources\bin" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.UDApplication">
+    <configuration name="VerifiablePolynomial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.common.polynomial.VerifiablePolynomial" />
+      <module name="common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.multi.domain.iot.common.polynomial.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuditAgentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="audit-agent" />
       <extension name="coverage">
@@ -74,7 +234,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UDApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="UDApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="ud" />
       <extension name="coverage">
         <pattern>
@@ -83,11 +243,13 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.multi.domain.iot.ud.UDApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.VerifiablePolynomial" />
       <item itemvalue="Spring Boot.AuditAgentApplication" />
       <item itemvalue="Spring Boot.IDVerifierApplication" />
       <item itemvalue="Spring Boot.PublicServerApplication" />
@@ -99,6 +261,7 @@
         <item itemvalue="Spring Boot.IDVerifierApplication" />
         <item itemvalue="Spring Boot.AuditAgentApplication" />
         <item itemvalue="Spring Boot.PublicServerApplication" />
+        <item itemvalue="Application.VerifiablePolynomial" />
       </list>
     </recent_temporary>
   </component>
@@ -111,10 +274,33 @@
       <option name="presentableId" value="Default" />
       <updated>1669631515070</updated>
       <workItem from="1669631518247" duration="940000" />
+      <workItem from="1669683972421" duration="16030000" />
+      <workItem from="1669711329453" duration="3447000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.fisco.bcos.sdk.abi.ABICodecException" package="org.fisco.bcos.sdk.abi" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

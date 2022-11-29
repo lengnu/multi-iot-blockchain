@@ -6,8 +6,10 @@ import com.multi.domain.iot.ud.model.bo.AuthenticationIsAuthorizedInputBO;
 import java.lang.Exception;
 import java.lang.String;
 import java.math.BigInteger;
+import java.util.Arrays;
 import javax.annotation.PostConstruct;
 
+import com.multi.domain.iot.ud.model.bo.AuthenticationQuerySingleAuthenticationInformationInputBO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.fisco.bcos.sdk.client.Client;
@@ -40,8 +42,16 @@ public class AuthenticationService {
         this.txProcessor = TransactionProcessorFactory.createAssembleTransactionProcessor(this.client, this.client.getCryptoSuite().getCryptoKeyPair());
     }
 
+    public TransactionResponse getAllAuthenticationInformation() throws Exception {
+        return this.txProcessor.sendTransactionAndGetResponse(this.address, ABI, "getAllAuthenticationInformation", Arrays.asList());
+    }
+
     public CallResponse isAuthorized(AuthenticationIsAuthorizedInputBO input) throws Exception {
         return this.txProcessor.sendCall(this.client.getCryptoSuite().getCryptoKeyPair().getAddress(), this.address, ABI, "isAuthorized", input.toArgs());
+    }
+
+    public CallResponse querySingleAuthenticationInformation(AuthenticationQuerySingleAuthenticationInformationInputBO input) throws Exception {
+        return this.txProcessor.sendCall(this.client.getCryptoSuite().getCryptoKeyPair().getAddress(), this.address, ABI, "querySingleAuthenticationInformation", input.toArgs());
     }
 
     public TransactionResponse addAuthenticationInformation(AuthenticationAddAuthenticationInformationInputBO input) throws Exception {
@@ -53,7 +63,7 @@ public class AuthenticationService {
      */
     public boolean isAuthorized(String pid) throws Exception {
         AuthenticationIsAuthorizedInputBO bo = new AuthenticationIsAuthorizedInputBO();
-        bo.setPid(pid);
+        bo.set_pid(pid);
         CallResponse response = this.isAuthorized(bo);
         Boolean result = (Boolean) response.getReturnObject().get(0);
         return result;
@@ -64,8 +74,8 @@ public class AuthenticationService {
      */
     public boolean addAuthenticationInformation(String pid, String identityProtectionInformation) throws Exception {
         AuthenticationAddAuthenticationInformationInputBO bo = new AuthenticationAddAuthenticationInformationInputBO();
-        bo.setPid(pid);
-        bo.setIdentityProtectionInformation(identityProtectionInformation);
+        bo.set_pid(pid);
+        bo.set_identityProtectionInformation(identityProtectionInformation);
         TransactionResponse transactionResponse = addAuthenticationInformation(bo);
         BigInteger result = (BigInteger) transactionResponse.getReturnObject().get(0);
         return result.equals(BigInteger.ONE);

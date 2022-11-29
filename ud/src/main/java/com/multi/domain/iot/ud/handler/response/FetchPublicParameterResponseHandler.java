@@ -33,12 +33,20 @@ public class FetchPublicParameterResponseHandler extends SimpleChannelInboundHan
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FetchPublicParameterResponsePacket responsePacket) throws Exception {
         if (responsePacket.isSuccess()) {
-            log.info("参与设备UD获取公共参数成功,向公共服务器查询审计代理和 [{}] 内所注册的身份验证者信息", udPersonalInformation.getDomain().getDomainIdentity());
+            log.info("参与设备UD获取公共参数成功,");
             UDPersonalParams udPersonalParams = UDPersonalParams.getInstance(responsePacket.getCurveMetaProperties());
             udPersonalParams.setUdPersonalInformation(udPersonalInformation);
             //注册到容器中
             registerUDPersonalParams(udPersonalParams);
-            ctx.writeAndFlush(new QueryAuditAgentAndIDVerifiersRequestPacket(udPersonalInformation.getDomain()));
+            if (udPersonalInformation.isRegister()){
+                //UD要进行身份认证
+                log.info("参与设备向公共服务器查询审计代理和 [{}] 内所注册的身份验证者信息，开始进行认证", udPersonalInformation.getDomain().getDomainIdentity());
+                ctx.writeAndFlush(new QueryAuditAgentAndIDVerifiersRequestPacket(udPersonalInformation.getDomain()));
+            }else {
+                //UD不需要身份认证
+                //TODO
+            }
+
         } else {
             log.error("发送未知错误，程序异常退出!");
             System.exit(1);

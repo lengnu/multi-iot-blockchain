@@ -4,6 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.multi.domain.iot.common.domain.Domain;
 import com.multi.domain.iot.common.role.Role;
 import lombok.Data;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * @author duwei
@@ -19,4 +20,15 @@ public class RegisterParams {
     private String host;
     private int listenPort;
     private Domain domain;
+
+
+    @Override
+    public String toString(){
+      return
+              "id = " + id + "\n" +
+              "role = " + role + "\n" +
+              "publibKey = " + Base64.encodeBase64String(publicKey) + "\n" +
+              "host = " + host + "\n" +
+              "listenPort = " + listenPort + "\n" ;
+    }
 }

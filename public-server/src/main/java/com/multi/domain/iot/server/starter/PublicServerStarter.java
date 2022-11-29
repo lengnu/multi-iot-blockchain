@@ -67,5 +67,6 @@ public class PublicServerStarter {
         } else {
             log.error("公共服务器在 [{}] 端口启动失败，请检查端口占用后重试!", this.port);
         }
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 }
