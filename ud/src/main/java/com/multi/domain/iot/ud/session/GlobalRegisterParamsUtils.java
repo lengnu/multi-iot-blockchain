@@ -2,6 +2,7 @@ package com.multi.domain.iot.ud.session;
 
 import com.multi.domain.iot.common.param.RegisterParams;
 import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
+import org.apache.commons.codec.binary.Base64;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
@@ -28,8 +29,6 @@ public class GlobalRegisterParamsUtils {
     public static void storeRegisterParams(QueryAuditAgentAndIDVerifiersResponsePacket queryAuditAgentAndIDVerifiersResponsePacket) {
         auditAgentRegisterParams = queryAuditAgentAndIDVerifiersResponsePacket.getAuditRegisterParams();
         domainIDVerifiersRegisterParams = queryAuditAgentAndIDVerifiersResponsePacket.getIdVerifierRegisterParams();
-        //TODO
-        System.out.println(queryAuditAgentAndIDVerifiersResponsePacket);
     }
 
     public static RegisterParams getAuditAgentRegisterParams() {

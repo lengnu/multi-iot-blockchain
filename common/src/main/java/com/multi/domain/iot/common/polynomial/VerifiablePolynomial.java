@@ -42,14 +42,7 @@ public class VerifiablePolynomial extends Polynomial {
         Map<Integer, byte[]> result = new HashMap<>();
         final Element[] coefficients_temp = getCoefficients();
         for (int i = 0; i < coefficients_temp.length; i++) {
-            //TOOD
-            System.out.println("---------------");
-            System.out.println("i = " + i + "\t 系数 + " + coefficients_temp[i]);
-            System.out.println("h = " + this.h);
-            System.out.println(this.h.powZn(coefficients_temp[i]));
-            System.out.println("---------------");
             Element commitment = computePolynomialCoefficientCommitment(coefficients_temp[i]);
-            System.out.println("result = " + commitment);
             result.put(i, commitment.toBytes());
         }
         return result;
@@ -78,8 +71,6 @@ public class VerifiablePolynomial extends Polynomial {
     }
 
 
-
-
     /**
      * 生成计算保护Yi(用公钥对份额加密)
      */
@@ -99,7 +90,6 @@ public class VerifiablePolynomial extends Polynomial {
         return publicKeyElement.powZn(shareElement).getImmutable();
     }
 
-    //TODO
     public static void main(String[] args) {
         TypeACurveGenerator typeACurveGenerator = new TypeACurveGenerator(50, 50);
         Pairing pairing = PairingFactory.getPairing(typeACurveGenerator.generate());
@@ -157,6 +147,33 @@ public class VerifiablePolynomial extends Polynomial {
         System.out.println("第二项 = " + C_1);
         System.out.println(C_0.mul(C_1).getImmutable());
         System.out.println(G.newElementFromBytes(computeSharesCommitment.get(2)));
+
+        System.out.println("--------------");
+        Element pk1 = G.newRandomElement().getImmutable();
+        Element pk2 = G.newRandomElement().getImmutable();
+        Element f_1 = Z.newElementFromBytes(map.get(1)).getImmutable();
+        Element f_2 = Z.newElementFromBytes(map.get(2)).getImmutable();
+
+        Element X1 = G.newElementFromBytes(computeSharesCommitment.get(1)).getImmutable();
+        Element X2 = G.newElementFromBytes(computeSharesCommitment.get(2)).getImmutable();
+
+        Element Y1 = pk1.powZn(f_1).getImmutable();
+        Element Y2 = pk2.powZn(f_2).getImmutable();
+
+        Element R1 = pairing.pairing(pk1,X1).getImmutable();
+        Element R2 = pairing.pairing(pk2,X2).getImmutable();
+
+        Element left = R1.mul(R2).getImmutable();
+        Element Y1_Y2 = Y1.add(Y2).getImmutable();
+        Element right = pairing.pairing(h,Y1_Y2);
+        System.out.println("left = " +left);
+        System.out.println("right = " + right);
+        Element one = pairing.getGT().newOneElement();
+        System.out.println(one);
+        one.mul(R1);
+        System.out.println(one);
+        one.mul(R2);
+        System.out.println(one);
     }
 
 }

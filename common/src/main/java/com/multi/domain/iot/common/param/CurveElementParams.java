@@ -39,10 +39,10 @@ public class CurveElementParams {
         byte[] hashG = ComputeUtils.sha512(curveMetaProperties.getGeneratorG().getBytes());
         byte[] hashH = ComputeUtils.sha512(curveMetaProperties.getGeneratorH().getBytes());
         curveElementParams.setGeneratorG(
-                pairing.getG1().newElementFromHash(hashG,0,hashG.length)
+                pairing.getG1().newElementFromHash(hashG,0,hashG.length).getImmutable()
                 );
         curveElementParams.setGeneratorH(
-                pairing.getG1().newElementFromHash(hashH,0,hashH.length)
+                pairing.getG1().newElementFromHash(hashH,0,hashH.length).getImmutable()
         );
         return curveElementParams;
     }

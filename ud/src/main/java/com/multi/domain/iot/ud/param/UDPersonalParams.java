@@ -68,7 +68,7 @@ public class UDPersonalParams implements StorableProperties {
         log.info("  3.4 使用身份验证者公钥对份额加密");
         Map<Integer, byte[]> publicKeyProtectionSharesMap = this.verifiablePolynomial.computePublicKeyProtectionShares(GlobalRegisterParamsUtils.getIDVerifiersPublicKey(), sharesMap);
         log.info("  3.5 计算验证信息");
-        Map<Integer, byte[]> verifiersInformation = this.computeVerifiersInformation(sharesCommitmentMap, publicKeyProtectionSharesMap, this.curveElementParams.getPairing(), this.curveElementParams.getG());
+        Map<Integer, byte[]> verifiersInformation = this.computeVerifiersInformation(sharesCommitmentMap, GlobalRegisterParamsUtils.getIDVerifiersPublicKey(), this.curveElementParams.getPairing(), this.curveElementParams.getG());
         return new AuthenticationMessage(
                 this.identityProtectionInformation,
                 polynomialCoefficientsCommitmentMap,
@@ -118,13 +118,13 @@ public class UDPersonalParams implements StorableProperties {
      * 计算验证信息
      */
     private Map<Integer, byte[]> computeVerifiersInformation(Map<Integer, byte[]> sharesCommitmentMap,
-                                                            Map<Integer, byte[]> publicKeyProtectionSharesMap,
+                                                            Map<Integer, byte[]> publicKeysMap,
                                                             Pairing pairing,
                                                             Field G) {
         Map<Integer, byte[]> result = new HashMap<>();
         sharesCommitmentMap.forEach((id, shareCommitment) -> {
-            byte[] publicKeyProtectionShare = publicKeyProtectionSharesMap.get(id);
-            result.put(id, computeVerifyInformation(shareCommitment, publicKeyProtectionShare, pairing, G).toBytes());
+            byte[] publicKey = publicKeysMap.get(id);
+            result.put(id, computeVerifyInformation(shareCommitment, publicKey, pairing, G).toBytes());
         });
         return result;
     }
@@ -134,8 +134,8 @@ public class UDPersonalParams implements StorableProperties {
                                              Pairing pairing,
                                              Field G) {
         Element shareCommitmentElement = G.newElementFromBytes(shareCommitment).getImmutable();
-        Element publicKeyProtectionShareElement = G.newElementFromBytes(publicKeyProtectionShare).getImmutable();
-        return pairing.pairing(shareCommitmentElement, publicKeyProtectionShareElement).getImmutable();
+        Element publicKeyElement= G.newElementFromBytes(publicKeyProtectionShare).getImmutable();
+        return pairing.pairing(shareCommitmentElement, publicKeyElement).getImmutable();
     }
 
 

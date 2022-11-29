@@ -138,7 +138,7 @@ public class ComputeUtils {
         //加法单位元为0
         it.unisa.dia.gas.jpbc.Element unitElement = field.newZeroElement();
         elements.forEach((elementByte) -> {
-            Element element = field.newElementFromBytes(elementByte);
+            Element element = field.newElementFromBytes(elementByte).getImmutable();
             unitElement.add(element);
         });
         return unitElement.getImmutable();

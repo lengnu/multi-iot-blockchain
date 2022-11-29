@@ -48,7 +48,7 @@ public class GeneratePidRequestHandler extends SimpleChannelInboundHandler<Gener
                 log.info("设备UD校验PID成功，接受PID作为自己假名，请在文件 [{}] 下查看PID信息", personalInformation.getParamsSavePath());
                 log.info("通知审计代理将PID信息上链");
             } else {
-                log.error("设备UD校验PID失败，原因 : {}", requestPacket.getReason());
+                log.error("设备UD校验PID失败");
                 responsePacket.setReason("设备UD校验PID失败");
             }
             ctx.writeAndFlush(responsePacket);

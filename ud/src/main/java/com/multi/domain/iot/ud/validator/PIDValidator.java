@@ -31,7 +31,7 @@ public class PIDValidator implements Validator {
     public boolean verify() {
         Field G = udPersonalParams.getCurveElementParams().getG();
         Field Zq = udPersonalParams.getCurveElementParams().getZ();
-        Element g = udPersonalParams.getCurveElementParams().getGeneratorG();
+        Element g = udPersonalParams.getCurveElementParams().getGeneratorG().getImmutable();
         byte[] publicKey = GlobalRegisterParamsUtils.getAuditAgentRegisterParams().getPublicKey();
         Element pkM = G.newElementFromBytes(publicKey).getImmutable();
         return verify(Zq, G, pkM, g);
@@ -64,8 +64,8 @@ public class PIDValidator implements Validator {
                                Element sign) {
         log.info("开始校验签名");
         Element front = pkM.powZn(hashNew).getImmutable();
-        Element right = front.mul(PID);
-        Element left = g.powZn(sign);
+        Element right = front.mul(PID).getImmutable();
+        Element left = g.powZn(sign).getImmutable();
         boolean success = right.equals(left);
         if (success) {
             log.info("签名校验通过");

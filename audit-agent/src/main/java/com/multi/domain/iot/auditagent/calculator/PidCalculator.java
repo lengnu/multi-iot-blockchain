@@ -37,9 +37,9 @@ public class PidCalculator {
         } else {
             log.info("各个身份验证者的确认信息都已收集完毕，开始为UD用户生成PID");
             Field G = auditAgentPersonalParams.getCurveElementParams().getG();
-            Element g = auditAgentPersonalParams.getCurveElementParams().getGeneratorG();
+            Element g = auditAgentPersonalParams.getCurveElementParams().getGeneratorG().getImmutable();
             Field Zq = auditAgentPersonalParams.getCurveElementParams().getZ();
-            Element msk = auditAgentPersonalParams.getMsk();
+            Element msk = auditAgentPersonalParams.getMsk().getImmutable();
 
             Collection<byte[]> confirmsInformation = ConfirmAuthenticationMessageSessionUtils.getConfirmsInformation(uid);
             Element alpha = ComputeUtils.calculateAccumulation(confirmsInformation, Zq).getImmutable();
@@ -50,9 +50,9 @@ public class PidCalculator {
             //1.计算PID
             Element PID = g.powZn(exponential).getImmutable();
             //2.计算hash
-            Element hash = ComputeUtils.H3(PID, Zq);
+            Element hash = ComputeUtils.H3(PID, Zq).getImmutable();
             //3.计算sign
-            Element back = hash.mulZn(msk).getImmutable();
+            Element back = hash.mul(msk).getImmutable();
             Element sign = exponential.add(back).getImmutable();
             PidAndSignMessage pidAndSignMessage = new PidAndSignMessage();
             pidAndSignMessage.setPid(PID.toBytes());
@@ -61,6 +61,8 @@ public class PidCalculator {
             requestPacket.setPidAndSignMessage(pidAndSignMessage);
             log.info("PID生成完毕，开始发送给对应的设备UD");
         }
+
+
         return requestPacket;
     }
 }
